@@ -9,7 +9,6 @@ class Day2
     File.open("Day2\\input2.txt", "r") do |f|
       f.each_line do |line|
         num_safe_reports += 1 if is_safe_report(line)
-        puts "Line: #{line} - is safe: #{is_safe_report(line)}"
       end
     end
     
@@ -42,16 +41,14 @@ class Day2
       end
 
       if find_order && direction_asc
-        #puts "previous: #{previous} - current: #{nums[i].to_i}"
-        if (nums[i].to_i-previous) <= 3 && (nums[i].to_i-previous) >= 1
+        if (nums[i].to_i-previous).between?(1,3)
           previous = nums[i].to_i
           next
         else
           return false
         end
       elsif find_order && !direction_asc
-        #puts "previous: #{previous} - current: #{nums[i].to_i}"
-        if (previous-nums[i].to_i) <= 3 && (previous-nums[i].to_i) >= 1
+        if (previous-nums[i].to_i).between?(1,3)
           previous = nums[i].to_i
           next
         else

@@ -45,7 +45,7 @@ class Day2
       end
 
       if find_order && direction_asc
-        if (nums[i].to_i-previous) <= 3 && (nums[i].to_i-previous) >= 1
+        if (nums[i].to_i-previous).between?(1,3)
           last_safe_previous = previous
           previous = nums[i].to_i
           next
@@ -57,7 +57,7 @@ class Day2
           end
         end
       elsif find_order && !direction_asc
-        if (previous-nums[i].to_i) <= 3 && (previous-nums[i].to_i) >= 1
+        if (previous-nums[i].to_i).between?(1,3)
           last_safe_previous = previous
           previous = nums[i].to_i
           next
