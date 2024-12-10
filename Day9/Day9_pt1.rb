@@ -31,35 +31,25 @@ class Day9
   end
 
   def move_blocks(disk_map)
-    #puts disk_map
     digits = disk_map.reverse
-    puts digits
       for i in 0..digits.size-1
-        #puts "iteration #{i}"
         if digits[i] != "."
-          puts "digit #{digits[i]} at index #{i}"
           empty_index = digits.rindex(".")
-          #puts "empty index #{empty_index} #{digits[empty_index]}"
           if empty_index != nil && empty_index > i
-            #puts "moving #{digits[i]} from index #{i} to index #{empty_index}"
             digits[empty_index] = digits[i]
             digits[i] = "."
-
-           # puts digits.reverse.join("")
           else
             break
           end
         end
       end
     digits = digits.reverse
-    #puts digits
     return digits
   end
 
   def calculate_checksum(disk_compacted)
     res = 0
     disk_compacted.each_with_index do |digit, i|
-      #puts disk_compacted
       if digit != '.'
         res += digit.to_i * i
       end
